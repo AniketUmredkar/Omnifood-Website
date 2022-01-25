@@ -14,30 +14,44 @@ btnNavEl.addEventListener("click", () => {
 ///////////////////////////////////////////////////////////
 // Smooth scrolling animation
 
-// const allLinks = document.querySelectorAll("a:link");
-// allLinks.forEach((element) => {
-//   element.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const href = element.getAttribute("href");
-//     if (href == "#") {
-//       window.scrollTo({
-//         top: 0,
-//         behavior: "smooth",
-//       });
-//     } else if (href !== "#" && href.startsWith("#")) {
-//       const sectionEl = document.querySelector(href);
-//       sectionEl.scrollIntoView({
-//         behavior: "smooth",
-//       });
-//     }
-//     if (element.classList.contains("main-nav-link")) {
-//       headerEl.classList.toggle("nav-open");
-//     }
-//   });
-// });
+const allLinks = document.querySelectorAll("a:link");
+allLinks.forEach((element) => {
+  element.addEventListener("click", (e) => {
+    e.preventDefault();
+    const href = element.getAttribute("href");
+    if (href == "#") {
+      if (element.id === "header-logo" || element.id === "footer-logo") {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    } else if (href !== "#" && href.startsWith("#")) {
+      const sectionEl = document.querySelector(href);
+      sectionEl.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+    if (element.classList.contains("main-nav-link")) {
+      headerEl.classList.toggle("nav-open");
+    }
+  });
+});
 
 ///////////////////////////////////////////////////////////
 // Sticky nav
+
+const sectionHeroEl = document.querySelector(".section-hero");
+const minOffset = sectionHeroEl.offsetTop + 600;
+console.log(minOffset);
+console.log(minOffset);
+window.onscroll = () => {
+  if (window.pageYOffset >= minOffset) {
+    document.body.classList.add("sticky");
+  } else {
+    document.body.classList.remove("sticky");
+  }
+};
 
 // const sectionHeroEl = document.querySelector(".section-hero");
 // const obs = new IntersectionObserver(
@@ -59,6 +73,7 @@ btnNavEl.addEventListener("click", () => {
 
 ///////////////////////////////////////////////////////////
 // Fixing flexbox gap property missing in some Safari versions
+
 // function checkFlexGap() {
 //   var flex = document.createElement("div");
 //   flex.style.display = "flex";
