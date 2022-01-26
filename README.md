@@ -1,2 +1,2 @@
 # Omnifood-Restaurant-Website
-Omnifood is a food subscription website designed using HTML and CSS.
+Omnifood is a responsive food subscription website designed using HTML, CSS and JavaScript
