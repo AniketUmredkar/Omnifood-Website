@@ -41,12 +41,9 @@ allLinks.forEach((element) => {
 ///////////////////////////////////////////////////////////
 // Sticky nav
 
-const sectionHeroEl = document.querySelector(".section-hero");
-const minOffset = sectionHeroEl.offsetTop + 600;
-console.log(minOffset);
-console.log(minOffset);
+const minOffset = 650;
 window.onscroll = () => {
-  if (window.pageYOffset >= minOffset) {
+  if (window.pageYOffset > minOffset) {
     document.body.classList.add("sticky");
   } else {
     document.body.classList.remove("sticky");
